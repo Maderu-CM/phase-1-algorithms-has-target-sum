@@ -1,6 +1,17 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  const numSet = new Set();//keep track of the numbers encountered so far
+
+  for (let i = 0; i < array.length; i++) {
+    const complement = target - array[i];
+    if (numSet.has(complement)) {
+      return true;
+    }
+    numSet.add(array[i]);
+  }
+
+  return false;
 }
+
 
 /* 
   Write the Big O time complexity of your function here
@@ -11,7 +22,7 @@ function hasTargetSum(array, target) {
 */
 
 /*
-  Add written explanation of your solution here
+  The hasTargetSum function takes an array of integers and a target integer as input. It uses a set (numSet) to keep track of the numbers encountered so far. It iterates through the array and calculates the complement of the current number with respect to the target. If the complement exists in the set, it means a pair of numbers that adds up to the target has been found, and the function returns true. If no such pair is found after iterating through the entire array, the function returns false.
 */
 
 // You can run `node index.js` to view these console logs
